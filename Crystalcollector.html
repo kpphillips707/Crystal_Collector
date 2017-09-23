@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+	<title></title>
+	<!--JQUERY Link-->
+	   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		</head>
+<body>
+<div class= "row">
+<div class= "col-md-4">
+<h1>Crystals Collector!</h1>
+<p id="game-description">
+You will be given a random number at the start of the game. <br>
+There are four crystals below. By clicking on a crystal you will add a specific amount of points to your total score.<br> You win the game by matching your total score to the random nuber, you lose the game if your total score goes above the random number.<br>
+The value of each crystal is hidden from you until you click on it.<br>
+Each time when the game starts, the game will change the values of each crystal.
+</p>
+</div>
+</div>
+
+<!--Display stats-->
+
+<p id="game-number">
+<p id ="score">
+<p id ="wins">
+<p id = "losses">
+
+
+<!--Crystal 1 Button-->
+<div class = "row">
+<div class = "col-md-1">
+<img id ="crystal-1" src="https://vignette.wikia.nocookie.net/marvel-contestofchampions/images/1/10/Arena_Crystal.png/revision/latest/scale-to-width-down/200?cb=20150825214845" width="100px;" height="100px;" >
+</div>
+<!--Crystal 2 button-->
+<div class = "col-md-1">
+<img id="crystal-2" src=" http://www.crystalclearintentions.co.nz/wp-content/uploads/crystals.jpg" width="100px;" height="100px;">
+</div>
+<!--Crystal 3 button-->
+<div class="col-md-1">
+<img id = "crystal-3" src="https://orig08.deviantart.net/62cb/f/2011/169/1/c/365_day_168_crystals_by_korikian-d3j8n69.png" width="100px;" height="100px;" >
+</div>
+
+<!--Crystal 4 button-->
+<div class="col-md-1">
+<img id = "crystal-4" src="https://www.bestcrystals.com/Content/Images/uploaded/MasterIndexImages/Celestite.jpg" width= "100px;" height="100px;">
+</div>
+
+<!---Begin CSS-->
+<style type="text/css">
+	body{
+		background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGjmAjDEBpXoe2xymRzNQz24Ft6QGXafpoEq7q0qmevkVFOHpUmA");
+	}
+ 
+	h1{background-color: orange;
+		padding: 30px;}
+
+	p{color: yellow;}
+	#game-number{font-size: 45px;}
+
+</style>
+
+
+
+<!--Begin Javascript-->
+<script>
+		var wins = 0;
+		var losses = 0;
+		var computerGuess = (Math.floor(Math.random() * 120)) + 19;
+		var score = 0 ;
+		var crystal1Value =	(Math.floor(Math.random() * 19)) + 1;
+		var crystal2Value =	(Math.floor(Math.random() * 19)) + 1;
+		var crystal3Value =	(Math.floor(Math.random() * 19)) + 1;
+		var crystal4Value =	(Math.floor(Math.random() * 19)) + 1;
+		
+	
+	
+
+$('#game-number').html( computerGuess);
+
+document.getElementById("score").innerHTML = "score " + score;
+document.getElementById("wins").innerHTML = wins;
+document.getElementById("losses").innerHTML = losses;
+
+
+
+//crystal 1
+
+$("#crystal-1").on('click', function () {
+$("#score").html(score + crystal1Value);
+ console.log(crystal1Value);
+ score += crystal1Value;
+	if(score === computerGuess){
+	wins ++;
+	score = 0;
+		 computerGuess = (Math.floor(Math.random() * 120)) + 19;
+		 crystal1Value =	(Math.floor(Math.random() * 19)) + 1;
+		 crystal2Value =	(Math.floor(Math.random() * 19)) + 1;
+		 crystal3Value =	(Math.floor(Math.random() * 19)) + 1;
+		 crystal4Value =	(Math.floor(Math.random() * 19)) + 1;
+	
+	$('#wins').html('wins ' + wins);
+	$('#score').html('score ' + score);
+	$('#game-number').html(computerGuess);
+}
+	if(score>computerGuess){
+		losses ++;
+		score = 0;
+		 computerGuess = (Math.floor(Math.random() * 120)) + 19;
+		 crystal1Value =	(Math.floor(Math.random() * 19)) + 1;
+		 crystal2Value =	(Math.floor(Math.random() * 19)) + 1;
+		 crystal3Value =	(Math.floor(Math.random() * 19)) + 1;
+		 crystal4Value =	(Math.floor(Math.random() * 19)) + 1;
+
+	$('#losses').html('losses ' + losses);
+	$('#score').html('score ' + score);
+	$('#game-number').html(computerGuess);
+	}	
+});
+
+
+//crystal 2
+$("#crystal-2").click(function () {
+$("#score").html(score + crystal2Value);
+ console.log(crystal2Value);
+ score += crystal2Value;
+if(score === computerGuess){
+wins ++;
+$('#wins').html('wins ' + wins);
+}	
+	if(score>computerGuess){
+		losses ++;
+		score = 0;
+		 computerGuess = (Math.floor(Math.random() * 120)) + 19;
+		 crystal1Value =	(Math.floor(Math.random() * 19)) + 1;
+		 crystal2Value =	(Math.floor(Math.random() * 19)) + 1;
+		 crystal3Value =	(Math.floor(Math.random() * 19)) + 1;
+		 crystal4Value =	(Math.floor(Math.random() * 19)) + 1;
+	$('#losses').html('losses '+ losses);
+	$('#score').html('score ' + score);
+	$('#game-number').html(computerGuess);
+	}	
+});
+
+
+//crystal 3
+$("#crystal-3").click(function () {
+$("#score").html(score + crystal3Value);
+console.log(crystal3Value);
+score += crystal3Value;
+if(score === computerGuess){
+wins ++;
+$('#wins').html('wins ' + wins);
+}	
+	if(score>computerGuess){
+		losses ++;
+		score = 0;
+		 computerGuess = (Math.floor(Math.random() * 120)) + 19;
+		 crystal1Value =	(Math.floor(Math.random() * 19)) + 1;
+		 crystal2Value =	(Math.floor(Math.random() * 19)) + 1;
+		 crystal3Value =	(Math.floor(Math.random() * 19)) + 1;
+		 crystal4Value =	(Math.floor(Math.random() * 19)) + 1;
+	$('#losses').html('losses ' + losses);
+	$('#score').html('score ' + score);
+	$('#game-number').html(computerGuess);
+	}	
+});
+
+
+//crystal 4
+$("#crystal-4").click(function () {
+$("#score").html(score + crystal3Value);
+console.log(crystal4Value);
+score += crystal4Value;
+if(score === computerGuess){
+wins ++;
+$('#wins').html('wins ' + wins);
+}
+	if(score>computerGuess){
+		losses ++;
+		score = 0;
+		 computerGuess = (Math.floor(Math.random() * 120)) + 19;
+		 crystal1Value =	(Math.floor(Math.random() * 19)) + 1;
+		 crystal2Value =	(Math.floor(Math.random() * 19)) + 1;
+		 crystal3Value =	(Math.floor(Math.random() * 19)) + 1;
+		 crystal4Value =	(Math.floor(Math.random() * 19)) + 1;
+
+	$('#losses').html('losses ' + losses);
+	$('#score').html('score ' + score);
+	$('#game-number').html(computerGuess);
+	}		
+});
+	
+		
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+</script>
+<!--End Javascript-->
+</body>
+</html>
